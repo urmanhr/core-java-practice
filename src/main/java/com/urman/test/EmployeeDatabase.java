@@ -15,9 +15,11 @@ public class EmployeeDatabase {
 	public static List<Employee> getEmployees() throws InterruptedException, ExecutionException, StreamReadException, DatabindException, IOException {
 
 		final ObjectMapper mapper = new ObjectMapper();
-		return mapper.readValue(new File("employees.json"),
+		List<Employee> list = mapper.readValue(new File("employees.json"),
 				new TypeReference<List<Employee>>() {
 				});		
+		//list.stream().forEach(System.out::println);
+		return list;
 	}
 
 }
