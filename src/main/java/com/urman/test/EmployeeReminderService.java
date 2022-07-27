@@ -15,7 +15,7 @@ public class EmployeeReminderService {
 				List<Employee> list = EmployeeDatabase.getEmployees();
 				return list;
 			} catch (InterruptedException | ExecutionException | IOException e) {
-				e.printStackTrace();
+				System.out.println("error");
 			}
 			return null;
 		}).thenApply(employees -> {
