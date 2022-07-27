@@ -12,14 +12,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class EmployeeDatabase {
 
-	public static List<Employee> getEmployees() throws InterruptedException, ExecutionException, StreamReadException, DatabindException, IOException {
+	public static List<Employee> getEmployees()
+			throws InterruptedException, ExecutionException, StreamReadException, DatabindException, IOException {
 
 		final ObjectMapper mapper = new ObjectMapper();
-		List<Employee> list = mapper.readValue(new File("employees.json"),
-				new TypeReference<List<Employee>>() {
-				});		
-		//list.stream().forEach(System.out::println);
-		return list;
+		return mapper.readValue(new File("employees.json"), new TypeReference<List<Employee>>() {
+		});
 	}
 
 }

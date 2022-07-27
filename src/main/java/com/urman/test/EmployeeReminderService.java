@@ -36,13 +36,12 @@ public class EmployeeReminderService {
 		future.get();
 		return null;
 	}
-	
+
 	public static List<Employee> getEmployees1() throws InterruptedException, ExecutionException {
 		CompletableFuture<List<String>> future = CompletableFuture.supplyAsync(() -> {
 			System.out.println("suppplyasync : " + Thread.currentThread().getName());
 			try {
-				List<Employee> list = EmployeeDatabase.getEmployees();
-				return list;
+				return EmployeeDatabase.getEmployees();
 			} catch (InterruptedException | ExecutionException | IOException e) {
 				e.printStackTrace();
 			}
@@ -66,7 +65,7 @@ public class EmployeeReminderService {
 	public static void sendEmail(String email) {
 		System.out.println("Sending email to " + email);
 	}
-	
+
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 //		getEmployees();
 		getEmployees1();
